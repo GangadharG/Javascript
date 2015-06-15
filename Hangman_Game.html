@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman Game</title>
+</head>
+<body>
+<script>
+	var wordsArray = ["hangman","javascript","teacher","father"];	 // Predefined array of words
+	var selectedWord = wordsArray[Math.floor(Math.random() * wordsArray.length)];// pick a random word from the array
+
+	var guessingArray = [];						// Array to store succesful guesses
+	for(var i=0; i < selectedWord.length; i++){			// Filling the array with '_'
+		guessingArray[i] = "_";
+	}
+	var remainingLetters = selectedWord.length;
+
+	while(remainingLetters > 0){					// Starting game loop
+	
+		alert(guessingArray.join(" "));				// progress of the guessed word
+		var guessedLetter = prompt("Guess a letter");
+		if(guessedLetter === null){
+			break;
+		}else if(guessedLetter.length !== 1){
+			alert("Please enter a single letter");
+		}else {
+			for(var j=0; j<selectedWord.length; j++){	// guessed the correct letter
+				if(selectedWord[j] === guessedLetter){
+					guessingArray[j]=guessedLetter;
+					remainingLetters--;
+				}
+			}
+		}
+	}// end of game loop
+	alert(guessingArray.join(" "));
+	alert("Congratulations, Succesfully guessed the word " + selectedWord);
+</script>
+</body>
+</html>
