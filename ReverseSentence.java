@@ -1,4 +1,6 @@
 // Program to reverse the words in a Sentence.
+// Input - "Palace a is This"
+// Output - "This is a Palace"
 public class ReverseSentence {
 
 	// StringBuffer to store input and then manipulate it to get output
