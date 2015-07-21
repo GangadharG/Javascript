@@ -1,0 +1,63 @@
+<!-- A Honey bee that buzzes around a Canvas container-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>A Random Bee</title>
+</head>
+<body>
+	<div style="text-align: center; margin:100px; ">
+		<canvas id="canvas" height="400" width="400" style="border:1px solid #000000;"></canvas>
+	</div>
+	<script>
+		var circle = function(x,y,radius,fillCircle){
+			ctx.beginPath();
+			ctx.arc(x,y,radius,0,Math.PI*2,false);
+			if(fillCircle){
+				ctx.fill();
+			}else{
+				ctx.stroke();
+			}
+		};
+		
+		var drawBee = function(x,y){
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = "Black";
+			ctx.fillStyle = "Gold";
+			
+			circle(x,y,8,true);
+			circle(x,y,8,false);
+			circle(x-5,y-11,5,false);
+			circle(x+5,y-11,5,false);
+			circle(x-2,y-1,2,false);
+			circle(x+2,y-1,2,false);
+		};
+		
+		var update = function(coordinate){
+			var offset = Math.random()*4 - 2;
+			coordinate += offset;
+			
+			if(coordinate>400){
+				coordinate=400;
+			}
+			if(coordinate<0){
+				coordinate=0;
+			}
+			return coordinate;
+		};
+		
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		
+		var x= 200;
+		var y= 200;
+		
+		setInterval(function(){
+			ctx.clearRect(0,0,400,400);
+			drawBee(x,y);
+			x=update(x);
+			y=update(y);
+			ctx.strokeRect(0, 0, 400, 400);
+		}, 30);
+	</script>
+</body>
+</html>
