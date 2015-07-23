@@ -1,0 +1,62 @@
+<!-- A Bouncing ball which bounces around the 4 corners of the canvas container -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>A Bouncing Ball</title>
+</head>
+<body>
+	<div style="text-align: center; margin:100px; ">
+		<canvas id="canvas" height="400" width="400" style="border:1px solid #000000;"></canvas>
+	</div>
+	<script>
+		
+		var Ball = function(){
+			this.x=200;
+			this.y=200;
+			this.xSpeed = -2;
+			this.ySpeed = 3;
+		};
+	
+		var circle = function(x,y,radius,fillCircle){
+			ctx.beginPath();
+			ctx.arc(x,y,radius,0,Math.PI*2,false);
+			if(fillCircle){
+				ctx.fill();
+			}else{
+				ctx.stroke();
+			}
+		};
+		
+		Ball.prototype.draw = function(){
+			circle(this.x,this.y,4,true);
+		};
+		
+		Ball.prototype.move = function(){
+			this.x += this.xSpeed;
+			this.y += this.ySpeed;
+		};
+		
+		Ball.prototype.checkCollision = function(){
+			if(this.x<0 || this.x >400){
+				this.xSpeed= -this.xSpeed;
+			}
+			if(this.y<0 || this.y > 400){
+				this.ySpeed= -this.ySpeed;
+			}
+		};
+		
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		
+		var ball = new Ball();
+		
+		setInterval(function(){
+			ctx.clearRect(0,0,400,400);
+			ball.draw();
+			ball.move();
+			ball.checkCollision();
+			ctx.strokeRect(0,0,400,400);
+		}, 30);
+	</script>
+</body>
+</html>
