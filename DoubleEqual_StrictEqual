@@ -1,0 +1,32 @@
+Difference between == and === in Javascript
+-------------------------------------------
+
+
+In Javascript, == is called as Double equals where as === is called as strict equals
+
+Both are used to check whether two variables are equal or not.
+It is always preferable to use === when you are checking the equality of two same types.s
+
+Example:
+	var number1 = 5;
+	var number2 = 5;
+	number1 === number2; 
+	The above condition result to true
+	number1 == number2;
+	The above condition also result to true
+
+Example:
+	var string = “5”;
+	var number = 5;
+	string === number;
+	The above condition result to false
+	string == number;
+	The above condition result to true
+
+Example:
+	0 == false;
+	The above condition result to true
+	“false” == false;
+	The above condition result to false
+
+The above 3 examples clearly explains the difference between == and === in javascript
