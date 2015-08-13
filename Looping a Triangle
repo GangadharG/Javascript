@@ -1,0 +1,15 @@
+Question : Write a loop that makes seven calls to console.log to output the following triangle:
+
+#
+##
+###
+####
+#####
+######
+#######
+
+Javascript Program:
+
+for(strVar = "#"; strVar.length<8; strVar+= "#"){
+  console.log(strVar);
+}
