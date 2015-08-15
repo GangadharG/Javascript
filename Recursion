@@ -1,0 +1,27 @@
+Question:
+
+• Zero is even.
+• One is odd.
+• For any other number N, its evenness is the same as N − 2.
+Define a recursive function isEven corresponding to this description. The function should accept a number parameter 
+and return Even or odd or Negative number.
+Test it on 50 and 75 and -1?
+
+
+Program:
+
+function isEven(input){
+  if(input === 1){
+    console.log("Odd number");
+  }else if(input === 0){
+    console.log("Even number");
+  }else if(input >1){
+    isEven(input-2);
+  }else{
+    console.log("Negative number")
+  }
+}
+
+isEven(50);
+isEven(75);
+isEven(-1);
